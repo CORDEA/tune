@@ -20,16 +20,16 @@ var (
 func handleCallback(writer http.ResponseWriter, request *http.Request) {
 	token, err := auth.Token(state, request)
 	if err != nil {
-		http.Error(writer, "token", http.StatusForbidden)
+		http.Error(writer, "Failed to get token.", http.StatusForbidden)
 		return
 	}
 	if s := request.FormValue("state"); s != state {
-		http.Error(writer, "state", http.StatusForbidden)
+		http.Error(writer, "Failed to get state or did not agree with sent.", http.StatusForbidden)
 		return
 	}
 	rawJson, err := json.Marshal(token)
 	if err != nil {
-		http.Error(writer, "state", http.StatusForbidden)
+		http.Error(writer, "Failed to build a json from struct.", http.StatusInternalServerError)
 		return
 	}
 	ioutil.WriteFile(credentialFileName, rawJson, os.ModePerm)

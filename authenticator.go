@@ -29,7 +29,6 @@ func handleCallback(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 	ioutil.WriteFile(spotifyclient.CredentialFileName, rawJson, os.ModePerm)
-
 }
 
 func main() {

@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 )
 
+const CredentialFileName = "credential.txt"
 const redirectURL = "http://localhost:8080/callback"
 
 var (
@@ -14,7 +15,7 @@ var (
 )
 
 func NewClient() (*spotify.Client, error) {
-	file, err := ioutil.ReadFile("credential.txt")
+	file, err := ioutil.ReadFile(CredentialFileName)
 	if err != nil {
 		return nil, err
 	}

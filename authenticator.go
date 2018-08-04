@@ -9,8 +9,6 @@ import (
 	"tune/spotifyclient"
 )
 
-const credentialFileName = "credential.txt"
-
 var (
 	state = "gpzn7t"
 )
@@ -30,7 +28,7 @@ func handleCallback(writer http.ResponseWriter, request *http.Request) {
 		http.Error(writer, "Failed to build a json from struct.", http.StatusInternalServerError)
 		return
 	}
-	ioutil.WriteFile(credentialFileName, rawJson, os.ModePerm)
+	ioutil.WriteFile(spotifyclient.CredentialFileName, rawJson, os.ModePerm)
 
 }
 

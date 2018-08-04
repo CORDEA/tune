@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/zmb3/spotify"
-	"net/http"
-	"fmt"
 	"encoding/json"
+	"fmt"
+	"github.com/zmb3/spotify"
 	"io/ioutil"
+	"net/http"
 	"os"
 )
 
@@ -13,7 +13,7 @@ const redirectURL = "http://localhost:8080/callback"
 const credentialFileName = "credential.txt"
 
 var (
-	auth = spotify.NewAuthenticator(redirectURL, spotify.ScopeUserReadCurrentlyPlaying)
+	auth  = spotify.NewAuthenticator(redirectURL, spotify.ScopeUserReadCurrentlyPlaying)
 	state = "gpzn7t"
 )
 
